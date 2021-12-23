@@ -10,5 +10,18 @@ namespace DungeonsOfDoom
         {
 
         }
+
+        public override AttackResult Attack(Character opponent)
+        {
+            int damage = 0;
+
+            if (opponent.Health < 30)
+            {
+                damage = 5;
+                opponent.Health -= damage;
+            }
+
+            return new AttackResult(this, opponent, damage);
+        }
     }
 }

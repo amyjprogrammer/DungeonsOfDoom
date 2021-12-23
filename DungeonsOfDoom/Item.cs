@@ -13,6 +13,7 @@ namespace DungeonsOfDoom
             Name = name;
         }
 
+        public abstract void Use(Player player);
         public string Name { get; set; }
     }
 }

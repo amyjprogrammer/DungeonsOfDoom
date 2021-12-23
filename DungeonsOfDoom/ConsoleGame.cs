@@ -90,7 +90,7 @@ namespace DungeonsOfDoom
             int newY = player.Y;
             bool isValidKey = true;
 
-            ConsoleKeyInfo keyInfo = Console.ReadKey();
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             switch (keyInfo.Key)
             {
                 case ConsoleKey.RightArrow: newX++; break;
@@ -114,9 +114,29 @@ namespace DungeonsOfDoom
         private void EnterRoom()
         {
             Room currentRoom = world[player.X, player.Y];
-            if (currentRoom.Item != null)
+            var monster = currentRoom.Monster;
+
+            if(monster != null)
+            {
+                AttackResult result = monster.Attack(player);
+                Console.WriteLine($"Monster damaged player by {result.Damage}");
+                Console.ReadKey(true);
+
+                if (player.IsAlive)
+                {
+                    result = player.Attack(monster);
+                    Console.WriteLine($"Player damaged monters by {result.Damage}");
+                    Console.ReadKey(true);
+                }
+
+                if (!monster.IsAlive)
+                    currentRoom.Monster = null;
+            }
+
+            if (player.IsAlive && currentRoom.Item != null)
             {
                 player.Backpack.Add(currentRoom.Item);
+                currentRoom.Item.Use(player);
                 currentRoom.Item = null;
             }
         }
