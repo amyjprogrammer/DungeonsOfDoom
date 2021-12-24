@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    abstract class Item
+    abstract class Item : ILuggable
     {
         public Item(string name)
         {

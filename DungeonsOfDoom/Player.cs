@@ -16,6 +16,6 @@ namespace DungeonsOfDoom
 
         public int X { get; set; }
         public int Y { get; set; }
-        public List<Item> Backpack { get; set; } = new List<Item>();
+        public List<ILuggable> Backpack { get; set; } = new List<ILuggable>();
     }
 }

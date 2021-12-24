@@ -4,10 +4,8 @@ using System.Text;
 
 namespace DungeonsOfDoom
 {
-    class Ogre : Monster
+    interface ILuggable
     {
-        public Ogre() : base("Ogre", 10)
-        {
-        }
+        public string Name { get; }
     }
 }

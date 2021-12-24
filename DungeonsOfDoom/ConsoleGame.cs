@@ -130,7 +130,10 @@ namespace DungeonsOfDoom
                 }
 
                 if (!monster.IsAlive)
+                {
+                    player.Backpack.Add(currentRoom.Monster);
                     currentRoom.Monster = null;
+                }
             }
 
             if (player.IsAlive && currentRoom.Item != null)
