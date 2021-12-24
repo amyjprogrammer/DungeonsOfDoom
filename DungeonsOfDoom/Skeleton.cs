@@ -6,7 +6,7 @@ namespace DungeonsOfDoom
 {
     class Skeleton : Monster
     {
-        public Skeleton() : base("Skeleton", 5)
+        public Skeleton() : base("Skeleton", RandomUtils.DiceRoll(6))
         {
 
         }

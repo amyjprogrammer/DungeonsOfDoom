@@ -19,7 +19,7 @@ namespace DungeonsOfDoom
             return new AttackResult(this, opponent, damage);
         }
 
-        public int Health { get; set; }
+        public virtual int Health { get; set; }
 
         public bool IsAlive { get { return Health > 0; } }
     }

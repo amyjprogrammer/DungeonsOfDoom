@@ -10,7 +10,7 @@ namespace DungeonsOfDoom
     {
         Player player;
         Room[,] world;
-        Random random = new Random();
+        //Random random = new Random();
 
         public void Play()
         {
@@ -23,7 +23,7 @@ namespace DungeonsOfDoom
                 DisplayWorld();
                 DisplayStats();
                 AskForMovement();
-            } while (player.IsAlive);
+            } while (player.IsAlive && Monster.MonsterCount > 0);
 
             GameOver();
         }
@@ -42,7 +42,7 @@ namespace DungeonsOfDoom
                 {
                     world[x, y] = new Room();
 
-                    int percentage = random.Next(0, 100);
+                    int percentage = RandomUtils.Percentage();
                     if (percentage < 5)
                         world[x, y].Monster = new Ogre();
                     else if (percentage < 10)
@@ -77,7 +77,8 @@ namespace DungeonsOfDoom
 
         private void DisplayStats()
         {
-            Console.WriteLine($"Health: {player.Health}");
+            Console.WriteLine($"Monsters: {Monster.MonsterCount}");
+            Console.WriteLine($"Player Health: {player.Health}");
             foreach (var item in player.Backpack)
             {
                 Console.WriteLine(item.Name);
@@ -116,10 +117,10 @@ namespace DungeonsOfDoom
             Room currentRoom = world[player.X, player.Y];
             var monster = currentRoom.Monster;
 
-            if(monster != null)
+            if (monster != null)
             {
                 AttackResult result = monster.Attack(player);
-                Console.WriteLine($"Monster damaged player by {result.Damage}");
+                Console.WriteLine($"({monster.Name}) ({result.Attacker.Health}) damaged player by {result.Damage}");
                 Console.ReadKey(true);
 
                 if (player.IsAlive)
@@ -147,7 +148,12 @@ namespace DungeonsOfDoom
         private void GameOver()
         {
             Console.Clear();
-            Console.WriteLine("Game over...");
+
+            if (Monster.MonsterCount > 0)
+                Console.WriteLine("Game over...");
+            else
+                Console.WriteLine("Congrats on defeating all the scary monsters!");
+
             Console.ReadKey();
             Play();
         }
