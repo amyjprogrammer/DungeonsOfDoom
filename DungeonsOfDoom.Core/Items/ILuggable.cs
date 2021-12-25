@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Core.Items
 {
-    interface ILuggable
+    public interface ILuggable
     {
         public string Name { get; }
     }

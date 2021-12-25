@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Utils;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Core.Characters
 {
-    class Skeleton : Monster
+    public class Skeleton : Monster
     {
         public Skeleton() : base("Skeleton", RandomUtils.DiceRoll(6))
         {

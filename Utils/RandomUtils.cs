@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonsOfDoom
+namespace Utils
 {
-    static class RandomUtils
+    public static class RandomUtils
     {
         static Random random = new Random();
         public static int Percentage()

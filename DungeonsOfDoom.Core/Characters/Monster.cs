@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DungeonsOfDoom.Core.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Core.Characters
 {
-    abstract class Monster : Character, ILuggable
+    public abstract class Monster : Character, ILuggable
     {
         public Monster(string name, int health) : base(health)
         {

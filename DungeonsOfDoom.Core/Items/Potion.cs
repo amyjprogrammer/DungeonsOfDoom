@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DungeonsOfDoom.Core.Characters;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Core.Items
 {
-    class Potion : Item
+    public class Potion : Item
     {
         public Potion() : base("Potion")
         {
